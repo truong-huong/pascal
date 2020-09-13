@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trương Hướng Blog</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Grandstander&display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<style>
+	html, body {
+		padding: 0;
+		margin:0;
+		height: 100%;
+		line-height: 1.6;
+		font-family: 'Grandstander', cursive;
+	}
+	a.post-box {
+		text-decoration: none;
+		color: unset;
+	}
+	.ratio-16-9 {
+		width: 100%;
+		padding-top: 56.25%; /* 1:1 Aspect Ratio */
+		position: relative;
+	}
+	#wrapper {
+		position: relative;
+	}
+	#header {
+		position: relative;
+		z-index: 10;
+	}
+	#banner {
+		position: absolute;
+		width: 100%;
+		height: 100vh;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+	}
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+	.ratio-16-9 img {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border: solid 1px #eee;
+		padding: 5px;
+	}
+	#image-cover {
+		width: 100%;
+		height: 100%;
+	}
+	#banner-text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		width: 80%;
+		font-size: 1.4em;
+		color: #fff;
+		text-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+	}
+	@media (max-width: 650px) {
+		#banner-text {
+			font-size: 1em;
+		}
+	}
+	#banner-image {
+		margin-right: 50px;
+		float: right;
+		
+	}
+	.pagi {
+		text-align: center;
+		text-transform: uppercase;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		font-size: 1.2em;
+	}
+	/* */
+	.posts-box {
+		margin:50px;
+		display: grid;
+		grid-template-columns: auto auto auto;
+	}
+	.post-box , .post-box > .container {
+		position: relative;
+	}
+	.post-box {
+		 margin-left: auto;
+		 margin-right: auto;
+		 width: 80%;
+		 margin-bottom: 50px;
+	}
+	.post-box-date {
+		position: absolute;
+		top: 20px;
+		width: 35px;
+		height: 35px;
+		left: -5px;
+		font-size: 0.8em;
+		text-align: center;
+		background: #fff;
+		font-weight: bolder;
+	}
+	.container {
+		width: 100%;
+		height: 100%;
+	}
+	.post-box-date > .container {
+		border:solid 2px #000;
+		padding: 5px;
+		background: #fff;
+		display: flex;
+		flex-direction: column;
+	}
+	.post-box-text {
+		text-align: center;
+		margin-top: 15px;
+	}
+</style>
+<style>
+    .cube {
+        margin: auto;
+        position: relative;
+        height: 100px;
+        width: 100px;
+        transform-style: preserve-3d;
+        z-index: -10;
+    }
+
+    .cube div {
+        position: absolute;
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        padding: 5px;
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        border: solid 1px #eee;
+        color: #fff;
+        font: 10px arial;
+        transition: transform 0.2s ease-in;
+    }
+    .back {
+        transform: translateZ(-100px) rotateY(180deg);
+    }
+
+    .right {
+        transform: rotateY(-270deg) translateX(100px);
+        transform-origin: top right;
+    }
+
+    .left {
+        transform: rotateY(270deg) translateX(-100px);
+        transform-origin: center left;
+    }
+
+    .top {
+        transform: rotateX(-270deg) translateY(-100px);
+        transform-origin: top center;
+    }
+
+    .bottom {
+        transform: rotateX(270deg) translateY(100px);
+        transform-origin: bottom center;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotateX(0deg) rotateY(0deg);
+        }
+
+        to {
+            transform: rotateX(360deg) rotateY(360deg);
+        }
+    }
+
+    .cube {
+        animation: rotate 15s infinite linear;
+    }
+
+ 
+</style>
+</head>
+<body>
+	<div id='wrapper'>
+		<header id='header'>
+			<div class="header-container">dfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf
+			</div>
+		</header>
+		<div id='banner'>
+			<div id='image-cover'>
+				<img src="https://todidau.com/wp-content/uploads/2020/05/38-min-1199x800.jpg">
+			</div>
+			<div id="banner-text">
+				<h1>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</h1>
+				<div id='banner-image'>
+					<div class="cube">
+					    <div class="front">
+					        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					    </div>
+					    <div class="back">
+					       <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					    </div>
+					    <div class="top">
+					        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					    </div>
+					    <div class="bottom">
+					        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					    </div>
+					    <div class="left">
+					        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					    </div>
+					    <div class="right">
+					        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					    </div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="pagi">
+			<span>Những bài viết mới nhất của tớ</span>
+		</div>
+		<div class="posts-box">
+			<a class="post-box" href='#'>
+				<div class="container">
+					<div class="ratio-16-9">
+						<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					</div>
+					<div class="post-box-text">
+						<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+					</div>
+					<div class="post-box-date">
+						<div class="container">
+							<span class="post-date-day">09</span>
+							<span class="post-date-month">Th9</span>
+						</div>
+					</div>
+				</div>
+			</a>
+			<a class="post-box" href='#'>
+				<div class="container">
+					<div class="ratio-16-9">
+						<img src="https://1.bp.blogspot.com/-m3AbjmW_pYg/X09KZQr8DhI/AAAAAAAACX0/PXJ1BKyjVNUNW32kQg0t4BiaS99g-D4WwCPcBGAsYHg/w640-h480/IMG20200901170607.jpg"/>
+					</div>
+					<div class="post-box-text">
+						<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+					</div>
+					<div class="post-box-date">
+						<div class="container">
+							<span class="post-date-day">09</span>
+							<span class="post-date-month">Th9</span>
+						</div>
+					</div>
+				</div>
+			</a><a class="post-box" href='#'>
+				<div class="container">
+					<div class="ratio-16-9">
+						<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					</div>
+					<div class="post-box-text">
+						<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+					</div>
+					<div class="post-box-date">
+						<div class="container">
+							<span class="post-date-day">09</span>
+							<span class="post-date-month">Th9</span>
+						</div>
+					</div>
+				</div>
+			</a>
+			
+			
+			
+		</div>
+		<main id='main'>
+			
+		</main>
+		<footer id='footer'>
+		</footer>
+	</div>
+</body>
+</html>
