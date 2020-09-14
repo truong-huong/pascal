@@ -17,22 +17,24 @@
 		text-decoration: none;
 		color: unset;
 	}
-	.ratio-16-9 {
-		width: 100%;
-		padding-top: 56.25%; /* 1:1 Aspect Ratio */
+	.wrapper {
 		position: relative;
 	}
-	#wrapper {
-		position: relative;
-	}
-	#header {
+	.header {
 		position: relative;
 		z-index: 10;
+		height: 100vh;
 	}
-	#banner {
+	#nav {
+		z-index: 10;
+		position: absolute;
+		top: 0;
+
+	}
+	.banner {
 		position: absolute;
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 		left: 0;
 		top: 0;
 		bottom: 0;
@@ -43,7 +45,17 @@
 		width: 100%;
 		height: 100%;
 	}
-	.ratio-16-9 img {
+	.ratio {
+		width: 100%;
+		position: relative;
+	}
+	.ratio-5-4 {
+		padding-top: 125%;
+	}
+	.ratio-16-9 {
+		padding-top: 56.25%; /* 1:1 Aspect Ratio */
+	}
+	.ratio img {
 		position: absolute;
 		top: 0;
 		bottom: 0;
@@ -52,11 +64,11 @@
 		border: solid 1px #eee;
 		padding: 5px;
 	}
-	#image-cover {
+	.image-cover {
 		width: 100%;
 		height: 100%;
 	}
-	#banner-text {
+	.banner-text {
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -68,11 +80,11 @@
 		text-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 	}
 	@media (max-width: 650px) {
-		#banner-text {
+		.banner-text {
 			font-size: 1em;
 		}
 	}
-	#banner-image {
+	.banner-image {
 		margin-right: 50px;
 		float: right;
 		
@@ -85,10 +97,41 @@
 		font-size: 1.2em;
 	}
 	/* */
-	.posts-box {
+	.grid {
 		margin:50px;
 		display: grid;
+	}
+	.column-3 {
 		grid-template-columns: auto auto auto;
+	}
+	@media (max-width: 760px) {
+		.column-3 {
+		    grid-template-columns: auto auto;
+		}
+		@media (max-width: 550px) {
+			.column-3 {
+			    grid-template-columns: auto;
+			    margin:50px 20px;
+			}
+		}
+	}
+	.column-6 {
+		grid-template-columns: auto auto auto auto auto auto;
+	}
+	@media (max-width: 872px) {
+		.column-6 {
+		    grid-template-columns: auto auto auto auto;
+		}
+		@media (max-width: 650px) {
+			.column-6 {
+			    grid-template-columns: auto auto auto;
+			}
+			@media (max-width:500px) {
+				.column-6 {
+				    grid-template-columns: auto auto;
+				}
+			}
+		}
 	}
 	.post-box , .post-box > .container {
 		position: relative;
@@ -98,6 +141,14 @@
 		 margin-right: auto;
 		 width: 80%;
 		 margin-bottom: 50px;
+	}
+	@media (max-width: 760px) {
+		.grid {
+			grid-gap:20px;
+		}
+		.post-box {
+			width: 100%;
+		}
 	}
 	.post-box-date {
 		position: absolute;
@@ -124,6 +175,43 @@
 	.post-box-text {
 		text-align: center;
 		margin-top: 15px;
+	}
+	/*   */
+	.same-category {
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#article * {
+		max-width: 100%;
+	}
+	#article {
+		width: 65%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	@media (max-width: 768px) {
+		#article {
+			width: 75%;
+		}
+		@media (max-width: 425px) {
+			#article {
+				width: 80%;
+			}
+	}
+	}
+	.summary-content {
+		padding: 20px;
+		margin:0;
+		font-style: italic;
+		font-size: 0.9em;
+		border-left: solid 2px #000;
+	}
+	.category-intro {
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
 	}
 </style>
 <style>
@@ -161,24 +249,13 @@
         transform: rotateY(270deg) translateX(-100px);
         transform-origin: center left;
     }
-
-    .top {
-        transform: rotateX(-270deg) translateY(-100px);
-        transform-origin: top center;
-    }
-
-    .bottom {
-        transform: rotateX(270deg) translateY(100px);
-        transform-origin: bottom center;
-    }
-
     @keyframes rotate {
         from {
-            transform: rotateX(0deg) rotateY(0deg);
+            transform: rotateY(0deg);
         }
 
         to {
-            transform: rotateX(360deg) rotateY(360deg);
+            transform: rotateY(360deg);
         }
     }
 
@@ -190,48 +267,43 @@
 </style>
 </head>
 <body>
-	<div id='wrapper'>
-		<header id='header'>
-			<div class="header-container">dfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf
+	<div class='wrapper'>
+		<header class='header'>
+			<nav id='nav'>dfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf
+			</nav>
+			<div class='banner'>
+				<div class='image-cover'>
+					<img src="https://todidau.com/wp-content/uploads/2020/05/38-min-1199x800.jpg">
+				</div>
+				<div class='banner-text'>
+					<h1>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</h1>
+					<div class='banner-image'>
+						<div class="cube">
+						    <div class="front">
+						        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+						    </div>
+						    <div class="back">
+						       <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+						    </div>
+						    <div class="left">
+						        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+						    </div>
+						    <div class="right">
+						        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+						    </div>
+					</div>
+					</div>	
+				</div>
 			</div>
 		</header>
-		<div id='banner'>
-			<div id='image-cover'>
-				<img src="https://todidau.com/wp-content/uploads/2020/05/38-min-1199x800.jpg">
-			</div>
-			<div id="banner-text">
-				<h1>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</h1>
-				<div id='banner-image'>
-					<div class="cube">
-					    <div class="front">
-					        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
-					    </div>
-					    <div class="back">
-					       <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
-					    </div>
-					    <div class="top">
-					        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
-					    </div>
-					    <div class="bottom">
-					        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
-					    </div>
-					    <div class="left">
-					        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
-					    </div>
-					    <div class="right">
-					        <img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
-					    </div>
-				</div>
-				
-			</div>
-		</div>
+
 		<div class="pagi">
 			<span>Những bài viết mới nhất của tớ</span>
 		</div>
-		<div class="posts-box">
+		<div class="grid column-3">
 			<a class="post-box" href='#'>
 				<div class="container">
-					<div class="ratio-16-9">
+					<div class="ratio ratio-16-9">
 						<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
 					</div>
 					<div class="post-box-text">
@@ -247,7 +319,7 @@
 			</a>
 			<a class="post-box" href='#'>
 				<div class="container">
-					<div class="ratio-16-9">
+					<div class="ratio ratio-16-9">
 						<img src="https://1.bp.blogspot.com/-m3AbjmW_pYg/X09KZQr8DhI/AAAAAAAACX0/PXJ1BKyjVNUNW32kQg0t4BiaS99g-D4WwCPcBGAsYHg/w640-h480/IMG20200901170607.jpg"/>
 					</div>
 					<div class="post-box-text">
@@ -262,7 +334,197 @@
 				</div>
 			</a><a class="post-box" href='#'>
 				<div class="container">
-					<div class="ratio-16-9">
+					<div class="ratio ratio-16-9">
+						<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					</div>
+					<div class="post-box-text">
+						<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+					</div>
+					<div class="post-box-date">
+						<div class="container">
+							<span class="post-date-day">09</span>
+							<span class="post-date-month">Th9</span>
+						</div>
+					</div>
+				</div>
+			</a>
+			<a class="post-box" href='#'>
+				<div class="container">
+					<div class="ratio ratio-16-9">
+						<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					</div>
+					<div class="post-box-text">
+						<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+					</div>
+					<div class="post-box-date">
+						<div class="container">
+							<span class="post-date-day">09</span>
+							<span class="post-date-month">Th9</span>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<main id='main'>
+			<article id='article'>
+				<blockquote class="summary-content">&nbsp;Đèo Ngang là khu vực phân cách giữa Quảng Bình và Hà Tĩnh.</blockquote><p></p><p>Video này được mình quay trong chuyến đi đọc hành thăm người chị của mình. Nhà chị mình cũng gần đèo Ngang nên tiện thể mình ghé qua chơi.</p><p>Quang cảnh ở đây rất đẹp và vì ở vị trí cao tương đối nên không khí ở đây tương đối mát mẻ. Xung quanh đều là những mỏm đá lớn và rừng xanh bao phủ. Cả quảng đường đèo dài hơn 5km (mình ước lượng nhé) với những khúc cua uốn lượn nhưng thực sự cũng không quá khó khăn khi vượt.&nbsp;</p><p>Giữa đèo còn có Hoành Sơn Quan là một di tích lịch sử được mệnh danh là cổng trời trăn tuổi trên đèo Ngang.</p><p>Lượn mình qua những đoạn đường quanh co trên đèo Ngang, chiêm ngưỡng quang cảnh tuyệt đẹp của núi rùng và vẻ hoang sơ của một con đèo cắt ngang hai tỉnh Quảng Bình và Hà Tĩnh. Tiếng gió rít vi vu bên tai hòa cùng tiếng bô nóng bỏng của chiếc Cub 50, cảm giác thật là chill.</p><p>Video mình quay ở độ nét cực cao, tuy nhiên blogger không cho phép up video dung lượng lớn nên mình đành phải hạ chất lượng video xuống.</p><p>Âm thanh trong video:</p><p><b>Video từ góc nhìn Hà Tĩnh xuôi về Quảng Bình:</b></p><div class="separator" style="clear: both; text-align: center;"><iframe allowfullscreen="" class="BLOG_video_class" height="608" src="https://www.youtube.com/embed/YQ7tN2XTlZY" width="1080" youtube-src-id="YQ7tN2XTlZY"></iframe></div><p><b>Đường đi:</b></p><div style="align-items: center; margin-left: auto; margin-right: auto; text-align: center;"><iframe allowfullscreen="" aria-hidden="false" frameborder="0" height="408" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30363.831189223245!2d106.45056707557642!3d17.95644301534375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313883a3c6e210d7%3A0x88e09d7fbd8ebce3!2zxJDDqG8gTmdhbmc!5e0!3m2!1svi!2s!4v1599372635408!5m2!1svi!2s" style="border: 0;" tabindex="0" width="720"></iframe></div><p><br /></p><p><br /></p>
+			</article>
+			<div class="grid column-6 same-category">
+				<a class="post-box" href='#'>
+					<div class="container">
+						<div class="ratio ratio-5-4">
+							<img src="https://1.bp.blogspot.com/-m3AbjmW_pYg/X09KZQr8DhI/AAAAAAAACX0/PXJ1BKyjVNUNW32kQg0t4BiaS99g-D4WwCPcBGAsYHg/w640-h480/IMG20200901170607.jpg"/>
+						</div>
+						<div class="post-box-text">
+							<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+						</div>
+						<div class="post-box-date">
+							<div class="container">
+								<span class="post-date-day">09</span>
+								<span class="post-date-month">Th9</span>
+							</div>
+						</div>
+					</div>
+				</a><a class="post-box" href='#'>
+					<div class="container">
+						<div class="ratio ratio-5-4">
+							<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+						</div>
+						<div class="post-box-text">
+							<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+						</div>
+						<div class="post-box-date">
+							<div class="container">
+								<span class="post-date-day">09</span>
+								<span class="post-date-month">Th9</span>
+							</div>
+						</div>
+					</div>
+				</a>
+				<a class="post-box" href='#'>
+					<div class="container">
+						<div class="ratio ratio-5-4">
+							<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+						</div>
+						<div class="post-box-text">
+							<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+						</div>
+						<div class="post-box-date">
+							<div class="container">
+								<span class="post-date-day">09</span>
+								<span class="post-date-month">Th9</span>
+							</div>
+						</div>
+					</div>
+				</a>
+				<a class="post-box" href='#'>
+					<div class="container">
+						<div class="ratio ratio-5-4">
+							<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+						</div>
+						<div class="post-box-text">
+							<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+						</div>
+						<div class="post-box-date">
+							<div class="container">
+								<span class="post-date-day">09</span>
+								<span class="post-date-month">Th9</span>
+							</div>
+						</div>
+					</div>
+				</a>
+				<a class="post-box" href='#'>
+					<div class="container">
+						<div class="ratio ratio-5-4">
+							<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+						</div>
+						<div class="post-box-text">
+							<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+						</div>
+						<div class="post-box-date">
+							<div class="container">
+								<span class="post-date-day">09</span>
+								<span class="post-date-month">Th9</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</main>
+		<footer id='footer'>
+		</footer>
+	</div>
+
+	<!-- -->
+
+	<div class='wrapper'>
+		<div class='header'>
+			<div class='banner'>
+				<div class='image-cover'>
+					<img src="https://todidau.com/wp-content/uploads/2020/05/38-min-1199x800.jpg">
+				</div>
+				<div class='banner-text'>
+					<h1>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</h1>
+				</div>
+			</div>
+		</div>
+		<div class="pagi">
+			<span>Những bài viết mới nhất của tớ</span>
+		</div>
+		<div class="category-intro">
+			<p>Đợi chờ có lẽ là thứ gì đó to lớn nhưng to lớn làm sao được bằng cậu</p>
+		</div>
+		<div class="grid column-3">
+			<a class="post-box" href='#'>
+				<div class="container">
+					<div class="ratio ratio-16-9">
+						<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					</div>
+					<div class="post-box-text">
+						<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+					</div>
+					<div class="post-box-date">
+						<div class="container">
+							<span class="post-date-day">09</span>
+							<span class="post-date-month">Th9</span>
+						</div>
+					</div>
+				</div>
+			</a>
+			<a class="post-box" href='#'>
+				<div class="container">
+					<div class="ratio ratio-16-9">
+						<img src="https://1.bp.blogspot.com/-m3AbjmW_pYg/X09KZQr8DhI/AAAAAAAACX0/PXJ1BKyjVNUNW32kQg0t4BiaS99g-D4WwCPcBGAsYHg/w640-h480/IMG20200901170607.jpg"/>
+					</div>
+					<div class="post-box-text">
+						<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+					</div>
+					<div class="post-box-date">
+						<div class="container">
+							<span class="post-date-day">09</span>
+							<span class="post-date-month">Th9</span>
+						</div>
+					</div>
+				</div>
+			</a><a class="post-box" href='#'>
+				<div class="container">
+					<div class="ratio ratio-16-9">
+						<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
+					</div>
+					<div class="post-box-text">
+						<span>Tạo hiệu ứng tua nhanh tua chậm thay đổi tốc độ video bằng Camtasia Studio 9</span>
+					</div>
+					<div class="post-box-date">
+						<div class="container">
+							<span class="post-date-day">09</span>
+							<span class="post-date-month">Th9</span>
+						</div>
+					</div>
+				</div>
+			</a>
+			<a class="post-box" href='#'>
+				<div class="container">
+					<div class="ratio ratio-16-9">
 						<img src="https://1.bp.blogspot.com/--KXyYpdSAII/X09P4v_yaXI/AAAAAAAACYs/7ds4BjevDSQ96N6U8qPJahQSuN4GuxJYwCLcBGAsYHQ/w600-h337-p-k-no-nu/r%25C3%25A0o-%25C4%2591%25C3%25A1-ng%25C3%25A2n-th%25E1%25BB%25A7y.jpg"/>
 					</div>
 					<div class="post-box-text">
@@ -278,13 +540,7 @@
 			</a>
 			
 			
-			
 		</div>
-		<main id='main'>
-			
-		</main>
-		<footer id='footer'>
-		</footer>
 	</div>
 </body>
 </html>
