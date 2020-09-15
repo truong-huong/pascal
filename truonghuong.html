@@ -147,7 +147,7 @@
 			grid-gap:20px;
 		}
 		.post-box {
-			width: 100%;
+			width: 90%;
 		}
 	}
 	.post-box-date {
@@ -185,7 +185,13 @@
 	#article * {
 		max-width: 100%;
 	}
+	#article a {
+	    color: #385898;
+	    cursor: pointer;
+	    text-decoration: none;
+	}
 	#article {
+		margin-top: 100px;
 		width: 65%;
 		margin-left: auto;
 		margin-right: auto;
@@ -202,16 +208,54 @@
 	}
 	.summary-content {
 		padding: 20px;
-		margin:0;
+		margin:15px 0;
 		font-style: italic;
 		font-size: 0.9em;
 		border-left: solid 2px #000;
+	}
+	.tips {
+		border: solid 2px #000;
 	}
 	.category-intro {
 		width: 80%;
 		margin-left: auto;
 		margin-right: auto;
 		text-align: center;
+	}
+	.post-metadata {
+		 display: flex;
+		 flex-direction: column;
+	}
+
+	#footer {
+		text-align: center;
+		margin-bottom: 50px;
+		margin-top: 100px;
+		border-top: solid 2px #888;
+		padding-top: 50px;
+	}
+	.footer-contact {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+	.icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin:auto 5px;
+	}
+	.icon-15-15 {
+		border-radius: 50%;
+		background: #f1f1f1;
+		width: 15px;
+		height: 15px;
+		padding: 5px;
+	}
+	svg {
+		width: 100%;
+		height: 100%;
 	}
 </style>
 <style>
@@ -367,6 +411,11 @@
 		</div>
 		<main id='main'>
 			<article id='article'>
+				<div class="post-metadata">
+					<div class="container">
+						<blockquote class="tips summary-content">Cùng xem những bài viết chất lừ về <a href='#'>BackPacking</a> khác của tớ</blockquote>
+					</div>
+				</div>
 				<blockquote class="summary-content">&nbsp;Đèo Ngang là khu vực phân cách giữa Quảng Bình và Hà Tĩnh.</blockquote><p></p><p>Video này được mình quay trong chuyến đi đọc hành thăm người chị của mình. Nhà chị mình cũng gần đèo Ngang nên tiện thể mình ghé qua chơi.</p><p>Quang cảnh ở đây rất đẹp và vì ở vị trí cao tương đối nên không khí ở đây tương đối mát mẻ. Xung quanh đều là những mỏm đá lớn và rừng xanh bao phủ. Cả quảng đường đèo dài hơn 5km (mình ước lượng nhé) với những khúc cua uốn lượn nhưng thực sự cũng không quá khó khăn khi vượt.&nbsp;</p><p>Giữa đèo còn có Hoành Sơn Quan là một di tích lịch sử được mệnh danh là cổng trời trăn tuổi trên đèo Ngang.</p><p>Lượn mình qua những đoạn đường quanh co trên đèo Ngang, chiêm ngưỡng quang cảnh tuyệt đẹp của núi rùng và vẻ hoang sơ của một con đèo cắt ngang hai tỉnh Quảng Bình và Hà Tĩnh. Tiếng gió rít vi vu bên tai hòa cùng tiếng bô nóng bỏng của chiếc Cub 50, cảm giác thật là chill.</p><p>Video mình quay ở độ nét cực cao, tuy nhiên blogger không cho phép up video dung lượng lớn nên mình đành phải hạ chất lượng video xuống.</p><p>Âm thanh trong video:</p><p><b>Video từ góc nhìn Hà Tĩnh xuôi về Quảng Bình:</b></p><div class="separator" style="clear: both; text-align: center;"><iframe allowfullscreen="" class="BLOG_video_class" height="608" src="https://www.youtube.com/embed/YQ7tN2XTlZY" width="1080" youtube-src-id="YQ7tN2XTlZY"></iframe></div><p><b>Đường đi:</b></p><div style="align-items: center; margin-left: auto; margin-right: auto; text-align: center;"><iframe allowfullscreen="" aria-hidden="false" frameborder="0" height="408" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30363.831189223245!2d106.45056707557642!3d17.95644301534375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313883a3c6e210d7%3A0x88e09d7fbd8ebce3!2zxJDDqG8gTmdhbmc!5e0!3m2!1svi!2s!4v1599372635408!5m2!1svi!2s" style="border: 0;" tabindex="0" width="720"></iframe></div><p><br /></p><p><br /></p>
 			</article>
 			<div class="grid column-6 same-category">
@@ -451,8 +500,6 @@
 				</a>
 			</div>
 		</main>
-		<footer id='footer'>
-		</footer>
 	</div>
 
 	<!-- -->
@@ -541,6 +588,39 @@
 			
 			
 		</div>
+	</div>
+
+	<!-- -->
+
+	<div class="wrapper">
+		<footer id='footer' class="container">
+			<div class="footer-nav">
+			</div>
+			<div class="footer-image">
+			</div>
+			<div class="footer-copyright">
+				<span>@COPYRIGHT BY TRUONG HUONG</span>
+			</div>
+			<div class="footer-contact">
+				<a href='#' class="icon icon-15-15">
+					<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="0 0 155.139 155.139" style="enable-background:new 0 0 155.139 155.139;" xml:space="preserve">
+					<path id="f_1_" style="fill:#010002;" d="M89.584,155.139V84.378h23.742l3.562-27.585H89.584V39.184
+						c0-7.984,2.208-13.425,13.67-13.425l14.595-0.006V1.08C115.325,0.752,106.661,0,96.577,0C75.52,0,61.104,12.853,61.104,36.452
+						v20.341H37.29v27.585h23.814v70.761H89.584z"/>
+					</svg>
+				</a>
+				<a href='#' class="icon icon-15-15">
+					<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="0 0 155.139 155.139" style="enable-background:new 0 0 155.139 155.139;" xml:space="preserve">
+					<path id="f_1_" style="fill:#010002;" d="M89.584,155.139V84.378h23.742l3.562-27.585H89.584V39.184
+						c0-7.984,2.208-13.425,13.67-13.425l14.595-0.006V1.08C115.325,0.752,106.661,0,96.577,0C75.52,0,61.104,12.853,61.104,36.452
+						v20.341H37.29v27.585h23.814v70.761H89.584z"/>
+					</svg>
+				</a>
+			</div>
+			<span>www.muoiblog.com</span>
+		</footer>
 	</div>
 </body>
 </html>
