@@ -13,20 +13,23 @@
 		}
 	</style>
 	<style>
-		.grid {
+		.grid , .grid-auto {
 			display: grid;
 		}
 		.column-6 {
-			grid-template-columns: 16.667% 16.667% 16.667% 16.667% 16.667% 16.667%;
+			grid-template-columns: repeat(6, 16.667%);
 		}
 		.column-5 {
-			grid-template-columns: 20% 20% 20% 20% 20%;
+			grid-template-columns: repeat(5, 20%);
 		}
 		.column-4 {
-			grid-template-columns: 25% 25% 25% 25%;
+			grid-template-columns: repeat(4, 25%);
+		}
+		.column-3 {
+			grid-template-columns: repeat(3, 33.33%);
 		}
 		.column-2 {
-			grid-template-columns: 50% 50%;
+			grid-template-columns: repeat(2, 50%);
 		}
 		.title {
 			font-size: 1.15em;
@@ -88,7 +91,7 @@
 		}
 		.card-cover {
 			position: relative;
-			border-radius: 15px;
+			border-radius: 10px;
 			overflow: hidden;
 			background-color: #00000024;
 		}
@@ -107,12 +110,13 @@
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-			opacity: 0.5;
+			opacity: 0.75;
 			transition: all .1s ease-in-out;
 		}
 		.card-wrapper {
 		 	position: relative; 
 		 	cursor: pointer;
+
 		} 
 		.card-meta {
 			position: absolute;
@@ -204,7 +208,7 @@
 		.ratio-5-4:after {
 			padding-top: 125%;
 		}
-		.ratio-4-3:after {
+		.ratio-3-4:after {
 			padding-top: 133.33%;
 		}
 		.ratio-1:after {
@@ -227,12 +231,23 @@
 		.poster , .container {
 			position: relative;
 		}
-		.poster-front {
+		.poster {
+			padding:20px;
+		}
+		.poster-cover {
 			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -10;
+		}
+		.poster-front {
+			/*position: absolute;
 			top: 0;
 			bottom: 0;
 			left: 0;
-			right: 0;
+			right: 0;*/
 			width: 100%;
 			height: 100%;
 			z-index: 10;
@@ -243,6 +258,43 @@
 		.poster-title {
 			color: #fff;
 			font-size: 3em;
+			font-weight: bold;
+		}
+		.poster-des {
+			color: #fff;
+			margin-bottom: 40px;
+			margin-left: 30px;
+			padding-left: 20px;
+			border-left:solid 2px #fff;
+		}
+		.poster-images {
+			column-count: 2;
+		}
+		@media (max-width: 1200px) {
+			.poster-images {
+				column-count: 1;
+			}
+		}
+		.place {
+			width: 100%;
+			position: relative;
+		}
+		.place img {
+			width: 100%;
+			height: auto;
+			box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+			border: solid 1px #eee;
+			padding: 5px;
+		}
+		.place .link {
+			position: absolute;
+			bottom: 15px;
+			right: 5px;
+			display: block;
+			width: 100%;
+			padding:4.8px 8px;
+			background:#ffffff6e;
+			text-transform: uppercase;
 			font-weight: bold;
 		}
 	</style>
@@ -378,42 +430,79 @@
 	<div class="wrapper grid column-2">
 		<div class="poster">
 			<div class="container">
-				<div class="ratio ratio-4-3">
-					<img class='ratio-img' src="https://ezcloud.vn/wp-content/uploads/2019/09/du-lich-ha-giang23.jpg_1.jpg">
+				<div class="poster-cover">
+					<img class='ratio-img' src="https://wiki-travel.com.vn/Uploads/picture/vovananhtravel-185820085830-ha-giang-03.jpg">
 				</div>
 				<div class="poster-front">
-					<span class='poster-title'>Hà Giang</span>
+					<div class="poster-meta">
+						<span class='poster-title'>Hà Giang</span>
+						<p class="poster-des">Hà Nơi nơi địa đầu của tổ quốc là mootjn ơi đẹp tuyệt vời mà bạn có thể khám phas</p>
+					</div>
+					<div class="poster-images">
+						<div class="place">
+							<img src="https://bizweb.dktcdn.net/thumb/grande/100/296/234/products/lung-cu-ha-giang.jpg?v=1530086909897">
+							<span class="link" >Lũng Cú</span>
+						</div>
+						<div class="place">
+							<img src="https://tour.dulichvietnam.com.vn/uploads/tour/1553224096_sapa-5.jpg">
+							<span class="link">Lũng Cú</span>
+						</div>
+						<div class="place">
+							<img src="https://i.guim.co.uk/img/media/7a9001138004322d8e7aeefffab619081834aa6a/0_0_4256_2554/master/4256.jpg?width=700&quality=85&auto=format&fit=max&s=e9c00ea6076262e7b3f0e2a2d6353682">
+							<span class="link">Lũng Cú</span>
+						</div>
+						<div class="place">
+							<img src="https://antuongxuyenviet.com/wp-content/uploads/2019/11/du-lich-ha-long-1.jpeg">
+							<span class="link">Lũng Cú</span>
+						</div>
+						<div class="place">
+							<img src="https://images.foody.vn/res/g9/86790/prof/s576x330/foody-mobile-sun-wheel-vong-quay-mat-troi-da-nang-da-nang-140718093414.jpg">
+							<span class="link">Lũng Cú</span>
+						</div>
+						<div class="place">
+							<img src="https://vcdn1-dulich.vnecdn.net/2019/10/09/du-lich-ma-pi-leng-vnexpress-9-1570583182.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=6uvKfLGq2Tn7alYfLxpp2w">
+							<span class="link">Lũng Cú</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="poster">
 			<div class="container">
-				<div class="ratio ratio-4-3">
-					<img class='ratio-img' src="https://du-lich-da-lat.com/wp-content/uploads/2018/07/kinh-nghiem-du-lich-da-lat.jpg">
+				<div class="poster-cover">
+					<img class='ratio-img' src="https://dulichtoday.vn/wp-content/uploads/2019/09/tour-ha-giang-2-ngay-1-dem-1-1.jpg">
 				</div>
 				<div class="poster-front">
-					<span class='poster-title'>Hà Giang</span>
-				</div>
-			</div>
-		</div>
-		<div class="poster">
-			<div class="container">
-				<div class="ratio ratio-4-3">
-					<img class='ratio-img' src="https://ezcloud.vn/wp-content/uploads/2019/09/du-lich-ha-giang23.jpg_1.jpg">
-				</div>
-				<div class="poster-front">
-					<span class='poster-title'>Hà Giang</span>
-				</div>
-			</div>
-		</div>
-		<div class="poster">
-			<div class="container">
-				<div class="ratio ratio-4-3">
-					<img class='ratio-img' src="https://du-lich-da-lat.com/wp-content/uploads/2018/07/kinh-nghiem-du-lich-da-lat.jpg">
-				</div>
-				<div class="poster-front">
-					<span class="poster-title">Hà Giang</span>
-					<span>hà Giang vẻ đẹp tiềm ẩn những địa điểm du lịch thú vị mà mình đã đi qua</span>
+					<div class="poster-meta">
+						<span class='poster-title'>Hà Giang</span>
+						<p class="poster-des">Hà Nơi nơi địa đầu của tổ quốc là mootjn ơi đẹp tuyệt vời mà bạn có thể khám phas</p>
+					</div>
+					<div class="poster-images">
+						<div class="place">
+							<img src="https://bizweb.dktcdn.net/thumb/grande/100/296/234/products/lung-cu-ha-giang.jpg?v=1530086909897">
+							<span class="link" >Lũng Cú</span>
+						</div>
+						<div class="place">
+							<img src="https://unsplash.it/1000/1600?image=1084">
+							<span class="link">Lũng Cú</span>
+						</div>
+						<div class="place">
+							<img src="https://unsplash.it/1000/1600?image=1083">
+							<span class="link">Lũng Cú</span>
+						</div>
+						<div class="place">
+							<img src="https://unsplash.it/1000/1600?image=1082">
+							<span class="link">Lũng Cú</span>
+						</div>
+						<div class="place">
+							<img src="https://bizweb.dktcdn.net/thumb/grande/100/296/234/products/lung-cu-ha-giang.jpg?v=1530086909897">
+							<span class="link">Lũng Cú</span>
+						</div>
+						<div class="place">
+							<img src="https://unsplash.it/1000/1600?image=1084">
+							<span class="link">Lũng Cú</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
