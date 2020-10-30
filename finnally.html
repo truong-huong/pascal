@@ -13,6 +13,9 @@
 		* {
 			box-sizing: border-box;
 		}
+		.h2 {
+			font-size: 25px;
+		}
 		.ratio {
 			width: 100%;
 			position: relative;
@@ -43,7 +46,7 @@
 			height: 100%;
 			object-fit: cover;	
 		}
-		.wrapper .container {
+		.wrapper > .container {
 			padding:40px 0;
 		}
 		.w-header {
@@ -65,11 +68,9 @@
 			color: #000;
 			text-align: left;
 			text-transform: uppercase;
-		 
 		}
 		.w-des {
 			 margin-top: 20px;
-			 text-transform: uppercase;
 		}
 		.w-header .image {
 			width: 70px;
@@ -92,33 +93,38 @@
 			margin-left: auto;
 			margin-right: auto;
 			width: 55%;
-			height: 70px;
-			font-size: 30px;
+		}
+		
+		.w-read .container {
+			width: 100%;
+			display: grid;
+			grid-template-columns: 70px auto 70px;
 			border-bottom-left-radius: 15px;
-			border-bottom-right-radius: 15px;
-			border-top-right-radius: 15px;
-			background: #000;
+			border-top-left-radius: 30px;
+			border-bottom-right-radius: 30px;
+		}
+		.w-read .container .image {
+			width: 100%;
+			position: relative;			 
+		}
+		.w-read .container .image img {
+			position: absolute;
+			width: 100%;
+			height: auto;
+			bottom: 0;
+		}
+		.w-link {
+			text-align: center;
+			padding: 20px;
+			font-size: 25px;
 			color: #fff;
 			text-transform: uppercase;
 		}
-		.w-read .container {
-			width: 100%;
-			height: 100%;
-			display: flex;
-			flex-direction: row;
+		.w-link:after {
+			display: inline-flex;
 			align-items: center;
-			justify-content: space-between;
-		}
-		.w-read .container .image {
-			position: relative;
-			width: 50px;
-		}
-		.w-read .container .image img {
-			position: relative;
-			width: 100%;
-			left: 0;
-			bottom: 0;
-
+			margin-left: 10px;
+			content: "👉"
 		}
 		.items .item {
 			border-radius: 8px;
@@ -156,8 +162,12 @@
 		.music-icon {
 			background: url(https://www.flaticon.com/premium-icon/icons/svg/2816/2816775.svg);
 		}
+		.cartoon-icon {
+			background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRbZruZDv319S5JX3H0y5x-bRm3Mg29zl77oA&usqp=CAU);
+		}
 		.item .data .title {
-
+			font-weight: bold;
+			font-size: 20px;
 		}
 		.item .data .category {
 			color: #a5a2a5;
@@ -167,7 +177,45 @@
 			display: block;
 			padding: 0 0 5px 0;
 		}
-	 
+		.n-class .a-me {
+			width: 60%;
+			margin: 50px auto;
+		}
+	 	.a-me.v1 {
+	 		display: grid;
+	 		grid-template-columns: 60% 40%;
+	 		border-radius: 15px;
+	 		overflow: hidden;
+	 		box-shadow:
+	 		  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+	 		  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+	 		  0 12.5px 10px rgba(0, 0, 0, 0.06),
+	 		  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+	 		  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+	 		  0 100px 80px rgba(0, 0, 0, 0.12)
+	 		;
+	 	}
+	 	.a-me.v1 .h2 {
+	 		font-weight: bold;
+	 	}
+	 	.a-me.v1 .image {
+	 		position: relative;
+	 	}
+	 	.a-me.v1 .image img{
+	 		position: absolute;
+	 		width: 100%;
+	 		height: 100%;
+	 		object-fit: cover;
+	 	}
+	 	.a-me.v1 .data {
+	 		padding: 10px 15px;
+	 	}
+	 	.a-me.v1 .data .w-read {
+	 		width: 100%;
+	 	}
+	 	.a-me.v1 .data .w-read .container {
+	 		grid-template-columns: 100%;
+	 	}
 	</style>
 </head>
 <body>
@@ -180,7 +228,103 @@
 					<span class="category">Âm nhạc</span>
 				</div>
 				<div class="w-des">
-					<span>những video âm nhạc vui nhộn của t</span>
+					<span>Những video âm nhạc vui nhộn của t</span>
+				</div>
+			</div>
+			<div class="w-body">
+				<div class="items">
+					<div class="item">
+						<div class="image ratio ratio-9-16">
+							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-6.jpg"/>
+						</div>
+						<div class="data">
+							<div class="icon travel-icon"></div>
+							<span class="category">Video của tớ</span>
+							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+						</div>
+					</div>
+					<div class="item">
+						<div class="image ratio ratio-9-16">
+							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg"/>
+						</div>
+						<div class="data">
+							<div class="icon music-icon"></div>
+							<span class="category">Video của tớ</span>
+							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+						</div>
+					</div>
+					<div class="item">
+						<div class="image ratio ratio-9-16">
+							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg"/>
+						</div>
+						<div class="data">
+							<div class="icon cartoon-icon"></div>
+							<span class="category">Video của tớ</span>
+							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+						</div>
+					</div>
+					<div class="item">
+						<div class="image ratio ratio-9-16">
+							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg"/>
+						</div>
+						<div class="data">
+							<span class="category">Video của tớ</span>
+							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+						</div>
+					</div>
+					<div class="item">
+						<div class="image ratio ratio-9-16">
+							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg"/>
+						</div>
+						<div class="data">
+							<span class="category">Video của tớ</span>
+							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="w-read">
+				<div class="container">
+					<div class='image'>
+						<img  src="https://assets.stickpng.com/images/58569c7a4f6ae202fedf2751.png">
+					</div>
+					<div class="w-link"><span>Xem nhiều bài viết hơn</span></div>
+					<div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="n-class">
+		<div class="container">
+			<div class="a-me v1">
+				<div class="image">
+					<img src="https://cn.i.cdn.ti-platform.com/content/2115/challenge-accepted--hot-wheels/link/sa/hw-win-tile-min.e9c1be83.png?imwidth=640">
+				</div>
+				<div class="data">
+					<span class="h2">Xem nhiều bài viết hơn</span>
+					<p>Trương Hướng là một thanh niên nghiêm túc trong làng chăn trâu rèo bò Việt Nam vơi kĩ năng rèo bò xuyên lục địa và đi xe xuyên mọi địa hình anh không ngán bất kì loại dịa hình nào cả</p>
+					<div class="w-read">
+						<div class="container">
+							<div class="w-link"><span>Find more</span></div>
+							<div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper">
+		<div class="container">
+			<div class="w-header">
+				<div class="data h2">
+					<img class='image' src="https://cn.i.cdn.ti-platform.com/cnapac/content/701/showpage/we-bare-bears/sa/showicon.png?w=100&h=100"/>
+					<span class="category">Âm nhạc</span>
+				</div>
+				<div class="w-des">
+					<span>Những video âm nhạc vui nhộn của t</span>
 				</div>
 			</div>
 			<div class="w-body">
@@ -237,45 +381,10 @@
 			<div class="w-read">
 				<div class="container">
 					<div class='image'>
-						<img  src="https://cdn0.iconfinder.com/data/icons/hand-gesture-5/512/hand_gesture_touch_free_hand_draw-512.png">
+						<img  src="https://assets.stickpng.com/images/58569c7a4f6ae202fedf2751.png">
 					</div>
-					<span>Xem nhiều bài viết hơn</span>
+					<div class="w-link"><span>Xem nhiều bài viết hơn</span></div>
 					<div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="wrapper">
-		<div class="container">
-			<div class="w-header">
-				<div class="data h2">
-					<img class='image' src="https://cn.i.cdn.ti-platform.com/cnapac/content/701/showpage/we-bare-bears/sa/showicon.png?w=100&h=100"/>
-					<span class="category">Âm nhạc</span>
-				</div>
-				<div class="w-des">
-					<span>những video âm nhạc vui nhộn của t</span>
-				</div>
-			</div>
-			<div class="w-body">
-				<div class="items">
-					<div class="item">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg"/>
-						</div>
-						<div class="data">
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg"/>
-						</div>
-						<div class="data">
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -289,10 +398,16 @@
 </body>
 <script type="text/javascript">
 	var color = ['#fff15c','#2eade4','#1e988a'];
+	var wLinkColor = ['#f57eb6','#95d600','#2fb6ea','#ed0080','#000'];
 	Array.prototype.forEach.call(document.querySelectorAll('body .wrapper'), (el) => {
 		var a = Math.floor(Math.random() * color.length) ;
 		el.style.backgroundColor = color[a];
 		color.splice(a, 1);
+	});
+	Array.prototype.forEach.call(document.querySelectorAll('.w-read .container'), (el) => {
+		var a = Math.floor(Math.random() * wLinkColor.length) ;
+		el.style.backgroundColor = wLinkColor[a];
+		wLinkColor.splice(a, 1);
 	});
 </script>
 </html>
