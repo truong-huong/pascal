@@ -1,593 +1,664 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-	<title>Trương Hướng Blog</title>
-	<link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-	<style type="text/css">
-		body {
-			padding: 0;
-			margin: 0;
-			font-family: 'Signika', sans-serif;
-			font-size: 1.2em;
-		}
-		* {
-			box-sizing: border-box;
-		}
-		.h2 {
-			font-size: 25px;
-		}
-		.ratio {
-			width: 100%;
-			position: relative;
-		}
-		.ratio:after {
-			content: "";
-			display: block;
-		}
-		.ratio-9-16:after {
-			padding-top: 56.25%;
-		}
-		.ratio-5-4:after {
-			padding-top: 125%;
-		}
-		.ratio-3-4:after {
-			padding-top: 75%;
-		}
-		.ratio-1:after {
-			padding-top: 100%;
-		}
-		.ratio-img {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;	
-		}
-		.wrapper > .container {
-			padding:40px 0;
-		}
-		.w-header {
-			display: flex;
-			flex-direction: column;
-		}
-		.w-header .data {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-		}
-		.w-header .data.h2 {
-			font-size: 1.5em;
-			font-weight: 700;
-			font-style: normal;
-			font-stretch: normal;
-			line-height: 1.2;
-			letter-spacing: -.2px;
-			color: #000;
-			text-align: left;
-			text-transform: uppercase;
-		}
-		.w-des {
-			 margin-top: 20px;
-			 font-size: 1.2em;
-		}
-		.w-header .image {
-			width: 70px;
-			height: 70px;
-			border-top-left-radius: 50%;
-			border-bottom-left-radius: 50%;
-			margin-right: 20px;
-		}
-		.w-header {
-			padding: 0 50px 0 50px;
-		}
-		.w-body {
-			padding: 50px 10px;
-		}
-		.w-body .items {
-			display: grid;
-			grid-template-columns: repeat(4,25%);
-		}
-		.w-read {
-			margin-left: auto;
-			margin-right: auto;
-			width: 50%;
-		}
-		
-		.w-read .container {
-			width: 100%;
-			display: grid;
-			grid-template-columns: 70px auto;
-			border-top-left-radius: 30px;
-			border-bottom-right-radius: 30px;
-		}
-		.w-read .container .image {
-			width: 100%;
-			position: relative;			 
-		}
-		.w-read .container .image img {
-			position: absolute;
-			width: 100%;
-			height: auto;
-			bottom: 0;
-		}
-		.w-link {
-			text-align: center;
-			padding: 20px;
-			font-size: 25px;
-			color: #fff;
-			text-transform: uppercase;
-			cursor: pointer;
-		}
-		.w-link:after {
-			display: inline-flex;
-			align-items: center;
-			margin-left: 10px;
-			content: "👉"
-		}
-		.items .item {
-			border-radius: 8px;
-			background: #fff;
-			box-shadow: 0 16px 16px 0 rgba(0,0,0,.08);
-			overflow: hidden;
-			transition: .2s ease;
-			cursor: pointer;
-			margin: 0 10px 20px 10px;
-			position: relative;
-		}
-		.items .item:hover {
-			transform: scale(1.02);
-			transition: .2s ease;
-		}
-		.item-video {
-			display: flex;
-			justify-content: center;
-			align-content: center;
-		}
-		.item-video .title {
-			text-align: center;
-			margin-top: 15px;
-			text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
-		}
-		.item-video .image {
-			filter: contrast(101%) brightness(91%) saturate(200%);
-			opacity: 0.8;
-		}
-		.item-video .data {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			padding: 20px;
-			display: flex;
-			align-items:center;
-			justify-content: center;
-			flex-direction: column;
-		}
-		.item-post .data {
-			padding: 15px 16px 13px;
-			display: flex;
-			flex-direction: column;
-			position: relative;
-		}
-		.item:not(.item-video) .data .icon {
-			position: absolute;
-			width: 50px;
-			height: 50px;
-		}
-		.item-video .data .icon {
-			width: 70px;
-			height: 70px;
-		}
-		.item .data .icon {
-			
-			border-radius: 50%;
-			right: 20px;
-			top: -25px;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: 100% 100%;
-		}
-		.travel-icon{
-			background: url(https://www.flaticon.com/svg/static/icons/svg/744/744502.svg);
-		}
-		.music-icon {
-			background: url(https://www.flaticon.com/premium-icon/icons/svg/2816/2816775.svg);
-		}
-		.cartoon-icon {
-			background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRbZruZDv319S5JX3H0y5x-bRm3Mg29zl77oA&usqp=CAU);
-		}
-		.video-icon {
-			background: url(https://www.flaticon.com/svg/static/icons/svg/860/860831.svg);
-		}
-		.item-video .data .title{
-			-webkit-line-clamp: 2;
-		}
-		.item:not(.item-video) .data .title {
-			-webkit-line-clamp: 3;
-		}
-		.item .data .title {
-			font-weight: bold;
-			font-size: 20px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			display: -webkit-box;
-			-webkit-box-orient: vertical;
-		}
-		.item .data .category {
-			color: #a5a2a5;
-			font-size: 13px;
-			font-weight: 600;
-			letter-spacing: .8px;
-			display: block;
-			padding: 0 0 5px 0;
-		}
-		.n-class .a-me {
-			width: 60%;
-			margin: 50px auto;
-		}
-	 	.a-me.v1 {
-	 		display: grid;
-	 		grid-template-columns: 60% 40%;
-	 		border-radius: 15px;
-	 		overflow: hidden;
-	 		box-shadow:
-	 		  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-	 		  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-	 		  0 12.5px 10px rgba(0, 0, 0, 0.06),
-	 		  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-	 		  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-	 		  0 100px 80px rgba(0, 0, 0, 0.12)
-	 		;
-	 	}
-	 	.a-me.v1 .h2 {
-	 		font-weight: bold;
-	 	}
-	 	.a-me.v1 .image {
-	 		position: relative;
-	 	}
-	 	.a-me.v1 .image img{
-	 		position: absolute;
-	 		width: 100%;
-	 		height: 100%;
-	 		object-fit: cover;
-	 	}
-	 	.a-me.v1 .data {
-	 		padding: 10px 15px;
-	 	}
-	 	.a-me.v1 .data .w-read {
-	 		width: 100%;
-	 	}
-	 	.a-me.v1 .data .w-read .container {
-	 		grid-template-columns: 100%;
-	 	}
-
-
-
-	 	/* reponsible */
-
-	 	@media all and (max-width: 1110px) {
-	 		.n-class .a-me {
-	 		    width: 70%;
-	 		}
-	 		@media all and (max-width: 1000px) {
-	 			.w-body .items {
-	 			    grid-template-columns: repeat(3,33.333%);
-	 			}
-	 		}
-	 		@media all and (max-width: 935px) {
-	 			.n-class .a-me {
-	 			    width: 90%;
-	 			}
-	 			@media all and (max-width: 900px) {
-	 				.w-read {
-	 					width: 70%;
-	 				}
-	 			}
-	 			@media all and (max-width: 790px) {
-	 				.item-video .data .icon {
-	 					width: 60px;
-	 					height: 60px;
-	 				}
-	 			}
-	 			@media all and (max-width: 790px) {
-	 				.w-body .items {
-	 				    grid-template-columns: repeat(2,50%);
-	 				}
-	 			}
-	 			@media all and (max-width: 700px) {
-	 				@media all and (max-width: 660px) {
-	 					.wrapper .w-link {
-	 						font-size: 1em;
-	 					}
-	 					.wrapper .w-read {
-	 						width: 90%;
-	 					}
-	 					@media all and (max-width: 500px) {
-	 						.w-body .items {
-	 						    grid-template-columns: repeat(1,100%);
-	 						}
-	 					}
-	 				}
-	 				.n-class .a-me.v1 {
-	 				    display: block;
-	 				}
-	 				.n-class .a-me.v1 .image {
-	 					height: 250px;
-	 					margin-bottom: 20px;
-	 				}
-	 			}
-	 		}
-	 	}
-	</style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&amp;display=swap" rel="stylesheet">
+    <title>Trương Hướng Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Signika&amp;display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Signika', sans-serif;
+            font-size: 1.2em;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .h2 {
+            font-size: 25px;
+        }
+        
+        .ratio {
+            width: 100%;
+            position: relative;
+        }
+        
+        .ratio:after {
+            content: "";
+            display: block;
+        }
+        
+        .ratio-9-16:after {
+            padding-top: 56.25%;
+        }
+        
+        .ratio-5-4:after {
+            padding-top: 125%;
+        }
+        
+        .ratio-3-4:after {
+            padding-top: 75%;
+        }
+        
+        .ratio-1:after {
+            padding-top: 100%;
+        }
+        
+        .ratio-img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .wrapper > .container {
+            padding: 40px 0;
+        }
+        
+        .w-header {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .w-header .data {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        
+        .w-header .data.h2 {
+            font-size: 2.5em;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.2;
+            letter-spacing: -.2px;
+            color: #000;
+            text-align: left;
+            font-family: 'Pacifico', cursive;
+        }
+        
+        .w-des {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        
+        .w-header .image {
+            width: 70px;
+            height: 70px;
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+            margin-right: 20px;
+        }
+        
+        .w-header {
+            padding: 0 50px 0 50px;
+        }
+        
+        .w-body {
+            padding: 50px 10px;
+            margin-top: 50px;
+        }
+        
+        .w-body .items {
+            display: grid;
+            grid-template-columns: repeat(4, 25%);
+        }
+        
+        .w-read {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        
+        .w-read .container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 70px auto;
+            border-top-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        
+        .w-read .container .image {
+            width: 100%;
+            position: relative;
+        }
+        
+        .w-read .container .image img {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            bottom: 0;
+        }
+        
+        .w-link {
+            text-align: center;
+            padding: 20px;
+            font-size: 25px;
+            color: #fff;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        
+        .w-link span {
+            position: relative;
+        }
+        
+        .w-link span:after {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 10px;
+            content: "👉";
+            bottom: 5px;
+            position: absolute;
+            transition: .2s ease;
+        }
+        
+        .w-read:hover .w-link span:after {
+            margin-left: 20px;
+            transition: .2s ease;
+        }
+        
+        .items .item {
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 16px 16px 0 rgba(0, 0, 0, .08);
+            overflow: hidden;
+            transition: .2s ease;
+            cursor: pointer;
+            margin: 0 10px 20px 10px;
+            position: relative;
+        }
+        
+        .items .item:hover {
+            transform: scale(1.02);
+            transition: .2s ease;
+        }
+        
+        .item-video {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+        
+        .item-video .title {
+            text-align: center;
+            margin-top: 15px;
+            text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
+        }
+        
+        .item-video .image {
+            filter: contrast(101%) brightness(91%) saturate(200%);
+            opacity: 0.8;
+        }
+        
+        .item-video .data {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .item-post .data {
+            padding: 15px 16px 13px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .item:not(.item-video) .data .icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+        
+        .item-video .data .icon {
+            width: 70px;
+            height: 70px;
+        }
+        
+        .item .data .icon {
+            border-radius: 50%;
+            right: 20px;
+            top: -25px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 100%;
+        }
+        
+        .travel-icon {
+            background: url(https://www.flaticon.com/svg/static/icons/svg/744/744502.svg);
+        }
+        
+        .music-icon {
+            background: url(https://www.flaticon.com/premium-icon/icons/svg/2816/2816775.svg);
+        }
+        
+        .cartoon-icon {
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRbZruZDv319S5JX3H0y5x-bRm3Mg29zl77oA&usqp=CAU);
+        }
+        
+        .video-icon {
+            background: url(https://www.flaticon.com/svg/static/icons/svg/860/860831.svg);
+        }
+        
+        .item-video .data .title {
+            -webkit-line-clamp: 2;
+        }
+        
+        .item:not(.item-video) .data .title {
+            -webkit-line-clamp: 3;
+        }
+        
+        .item .data .title {
+            font-weight: bold;
+            font-size: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+        
+        .item .data .category {
+            color: #a5a2a5;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .8px;
+            display: block;
+            padding: 0 0 5px 0;
+        }
+        
+        .n-class .a-me {
+            width: 60%;
+            margin: 50px auto;
+        }
+        
+        .a-me.v1 {
+            display: grid;
+            grid-template-columns: 60% 40%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+        }
+        
+        .a-me.v1 .h2 {
+            font-weight: bold;
+        }
+        
+        .a-me.v1 .image {
+            position: relative;
+        }
+        
+        .a-me.v1 .image img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .a-me.v1 .data {
+            padding: 10px 15px;
+        }
+        
+        .a-me.v1 .data .w-read {
+            width: 100%;
+        }
+        
+        .a-me.v1 .data .w-read .container {
+            grid-template-columns: 100%;
+        }
+        /* reponsible */
+        
+        @media all and (max-width: 1110px) {
+            .n-class .a-me {
+                width: 70%;
+            }
+            @media all and (max-width: 1000px) {
+                .w-body .items {
+                    grid-template-columns: repeat(3, 33.333%);
+                }
+            }
+            @media all and (max-width: 935px) {
+                .n-class .a-me {
+                    width: 90%;
+                }
+                @media all and (max-width: 900px) {
+                    .w-read {
+                        width: 70%;
+                    }
+                }
+                @media all and (max-width: 790px) {
+                    .item-video .data .icon {
+                        width: 60px;
+                        height: 60px;
+                    }
+                }
+                @media all and (max-width: 790px) {
+                    .w-body .items {
+                        grid-template-columns: repeat(2, 50%);
+                    }
+                }
+                @media all and (max-width: 700px) {
+                    @media all and (max-width: 660px) {
+                        .wrapper .w-link {
+                            font-size: 1em;
+                        }
+                        .wrapper .w-read {
+                            width: 90%;
+                        }
+                        @media all and (max-width: 500px) {
+                            .w-body .items {
+                                grid-template-columns: repeat(1, 100%);
+                            }
+                        }
+                        .w-header {
+                            padding-left: 20px;
+                            padding-right: 20px
+                        }
+                        .w-header .data.h2 {
+                            font-size: 1.75em;
+                        }
+                    }
+                    .n-class .a-me.v1 {
+                        display: block;
+                    }
+                    .n-class .a-me.v1 .image {
+                        height: 250px;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-	<div class="wrapper">
-		<div class="container">
-			<div class="w-header">
-				<div class="data h2">
-					<img class='image' src="https://cn.i.cdn.ti-platform.com/cnapac/content/701/showpage/we-bare-bears/sa/showicon.png?w=100&h=100"/>
-					<span class="category">Âm nhạc</span>
-				</div>
-				<div class="w-des">
-					<span>Những video âm nhạc vui nhộn của t</span>
-				</div>
-			</div>
-			<div class="w-body">
-				<div class="items">
-					<div class="item item-post">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-6.jpg"/>
-						</div>
-						<div class="data">
-							<div class="icon travel-icon"></div>
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-post">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg"/>
-						</div>
-						<div class="data">
-							<div class="icon music-icon"></div>
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-post">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg"/>
-						</div>
-						<div class="data">
-							<div class="icon cartoon-icon"></div>
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-post">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg"/>
-						</div>
-						<div class="data">
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-post">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg"/>
-						</div>
-						<div class="data">
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="w-read">
-				<div class="container">
-					<div class='image'>
-						<img  src="https://assets.stickpng.com/images/58569c7a4f6ae202fedf2751.png">
-					</div>
-					<div class="w-link"><span>Xem nhiều bài viết hơn</span></div>
-					<div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="wrapper">
-		<div class="container">
-			<div class="w-header">
-				<div class="data h2">
-					<img class='image' src="https://cn.i.cdn.ti-platform.com/cnapac/content/701/showpage/we-bare-bears/sa/showicon.png?w=100&h=100"/>
-					<span class="category">Video Vui nhộn</span>
-				</div>
-				<div class="w-des">
-					<span>Những video âm nhạc vui nhộn của t</span>
-				</div>
-			</div>
-			<div class="w-body">
-				<div class="items">
-					<div class="item item-video">
-						<div class="image ratio ratio-3-4">
-							<img class="ratio-img" src="https://cf.shopee.vn/file/b2c08d789bd356f5f19debfa600f477b"/>
-						</div>
-						<div class="data">
-							<div class="icon video-icon"></div>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-video">
-						<div class="image ratio ratio-3-4">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg"/>
-						</div>
-						<div class="data">
-							<div class="icon video-icon"></div>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-video">
-						<div class="image ratio ratio-3-4">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg"/>
-						</div>
-						<div class="data">
-							<div class="icon video-icon"></div>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-video">
-						<div class="image ratio ratio-3-4">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg"/>
-						</div>
-						<div class="data">
-							<div class="icon video-icon"></div>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-video">
-						<div class="image ratio ratio-3-4">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg"/>
-						</div>
-						<div class="data">
-							<div class="icon video-icon"></div>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="w-read">
-				<div class="container">
-					<div class='image'>
-						<img  src="https://assets.stickpng.com/images/58569c7a4f6ae202fedf2751.png">
-					</div>
-					<div class="w-link"><span>Xem nhiều bài viết hơn</span></div>
-					<div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="n-class">
-		<div class="container">
-			<div class="a-me v1">
-				<div class="image">
-					<img src="https://cn.i.cdn.ti-platform.com/content/2115/challenge-accepted--hot-wheels/link/sa/hw-win-tile-min.e9c1be83.png?imwidth=640">
-				</div>
-				<div class="data">
-					<span class="h2">Xem nhiều bài viết hơn</span>
-					<p>Trương Hướng là một thanh niên nghiêm túc trong làng chăn trâu rèo bò Việt Nam vơi kĩ năng rèo bò xuyên lục địa và đi xe xuyên mọi địa hình anh không ngán bất kì loại dịa hình nào cả</p>
-					<div class="w-read">
-						<div class="container">
-							<div class="w-link"><span>Find more</span></div>
-							<div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="wrapper" style="/* background-color: rgb(46, 173, 228); */background: url(&quot;https://cn.i.cdn.ti-platform.com/cnapac/content/328/showpage/adventure-time/sa/backgroundbottom.png?imwidth=&quot;);background-repeat: no-repeat;background-size: cover;background-position: center;">
+        <div class="container">
+            <div class="w-header">
+                <div class="data h2">
+                    <img class="image" src="https://cn.i.cdn.ti-platform.com/cnapac/content/701/showpage/we-bare-bears/sa/showicon.png?w=100&amp;h=100">
+                    <span class="category">Âm nhạc</span>
+                </div>
+                <div class="w-des">
+                    <span>Những video âm nhạc vui nhộn của t</span>
+                </div>
+            </div>
+            <div class="w-body">
+                <div class="items">
+                    <div class="item item-post">
+                        <div class="image ratio ratio-9-16">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-6.jpg">
+                        </div>
+                        <div class="data">
+                            <div class="icon travel-icon"></div>
+                            <span class="category">Video của tớ</span>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-post">
+                        <div class="image ratio ratio-9-16">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg">
+                        </div>
+                        <div class="data">
+                            <div class="icon music-icon"></div>
+                            <span class="category">Video của tớ</span>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-post">
+                        <div class="image ratio ratio-9-16">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg">
+                        </div>
+                        <div class="data">
+                            <div class="icon cartoon-icon"></div>
+                            <span class="category">Video của tớ</span>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-post">
+                        <div class="image ratio ratio-9-16">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg">
+                        </div>
+                        <div class="data">
+                            <span class="category">Video của tớ</span>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-post">
+                        <div class="image ratio ratio-9-16">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg">
+                        </div>
+                        <div class="data">
+                            <span class="category">Video của tớ</span>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-read">
+                <div class="container" style="background-color: rgb(237, 0, 128);">
+                    <div class="image">
+                        <img src="https://assets.stickpng.com/images/58569c7a4f6ae202fedf2751.png">
+                    </div>
+                    <div class="w-link"><span>Xem nhiều bài viết hơn</span>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper" style="background-url: rgb(30, 152, 138);background: url(https://images.squarespace-cdn.com/content/v1/53c2b43de4b089c3a2e52c35/1570453493221-TVP4G1EWJOSDT62NYF1G/ke17ZwdGBToddI8pDm48kFCdVk6JiStXKxFB2laO6BVZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVGfCKANlPOrWgvRZLdK-2Jeq3DW9prir36dML6GMm86Zpds0wLZQ5JKBWnVXK4OIko/IllustratedNature_TallFirs.jpg);background-repeat: no-repeat;background-position: center;background-size: cover;">
+        <div class="container">
+            <div class="w-header">
+                <div class="data h2">
+                    <img class="image" src="https://cn.i.cdn.ti-platform.com/cnapac/content/701/showpage/we-bare-bears/sa/showicon.png?w=100&amp;h=100">
+                    <span class="category">Video Vui nhộn</span>
+                </div>
+                <div class="w-des">
+                    <span>Những video âm nhạc vui nhộn của t</span>
+                </div>
+            </div>
+            <div class="w-body">
+                <div class="items">
+                    <div class="item item-video">
+                        <div class="image ratio ratio-3-4">
+                            <img class="ratio-img" src="https://cf.shopee.vn/file/b2c08d789bd356f5f19debfa600f477b">
+                        </div>
+                        <div class="data">
+                            <div class="icon video-icon"></div>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-video">
+                        <div class="image ratio ratio-3-4">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg">
+                        </div>
+                        <div class="data">
+                            <div class="icon video-icon"></div>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-video">
+                        <div class="image ratio ratio-3-4">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg">
+                        </div>
+                        <div class="data">
+                            <div class="icon video-icon"></div>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-video">
+                        <div class="image ratio ratio-3-4">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg">
+                        </div>
+                        <div class="data">
+                            <div class="icon video-icon"></div>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-video">
+                        <div class="image ratio ratio-3-4">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg">
+                        </div>
+                        <div class="data">
+                            <div class="icon video-icon"></div>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-read">
+                <div class="container" style="background-color: rgb(149, 214, 0);">
+                    <div class="image">
+                        <img src="https://assets.stickpng.com/images/58569c7a4f6ae202fedf2751.png">
+                    </div>
+                    <div class="w-link"><span>Xem nhiều bài viết hơn</span>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="n-class">
+        <div class="container">
+            <div class="a-me v1">
+                <div class="image">
+                    <img src="https://cn.i.cdn.ti-platform.com/content/2115/challenge-accepted--hot-wheels/link/sa/hw-win-tile-min.e9c1be83.png?imwidth=640">
+                </div>
+                <div class="data">
+                    <span class="h2">Xem nhiều bài viết hơn</span>
+                    <p>Trương Hướng là một thanh niên nghiêm túc trong làng chăn trâu rèo bò Việt Nam vơi kĩ năng rèo bò xuyên lục địa và đi xe xuyên mọi địa hình anh không ngán bất kì loại dịa hình nào cả</p>
+                    <div class="w-read">
+                        <div class="container" style="background-color: rgb(47, 182, 234);">
+                            <div class="w-link"><span>Find more</span>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="wrapper">
-		<div class="container">
-			<div class="w-header">
-				<div class="data h2">
-					<img class='image' src="https://cn.i.cdn.ti-platform.com/cnapac/content/701/showpage/we-bare-bears/sa/showicon.png?w=100&h=100"/>
-					<span class="category">Âm nhạc</span>
-				</div>
-				<div class="w-des">
-					<span>Những video âm nhạc vui nhộn của tớ</span>
-				</div>
-			</div>
-			<div class="w-body">
-				<div class="items">
-					<div class="item item-post">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-6.jpg"/>
-						</div>
-						<div class="data">
-							<div class="icon travel-icon"></div>
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-post">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg"/>
-						</div>
-						<div class="data">
-							<div class="icon music-icon"></div>
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-post">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg"/>
-						</div>
-						<div class="data">
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-post">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg"/>
-						</div>
-						<div class="data">
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-					<div class="item item-post">
-						<div class="image ratio ratio-9-16">
-							<img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg"/>
-						</div>
-						<div class="data">
-							<span class="category">Video của tớ</span>
-							<span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="w-read">
-				<div class="container">
-					<div class='image'>
-						<img  src="https://assets.stickpng.com/images/58569c7a4f6ae202fedf2751.png">
-					</div>
-					<div class="w-link"><span>Xem nhiều bài viết hơn</span></div>
-					<div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="wrapper" style="background-color: rgb(255, 241, 92);">
+        <div class="container">
+            <div class="w-header">
+                <div class="data h2">
+                    <img class="image" src="https://cn.i.cdn.ti-platform.com/cnapac/content/701/showpage/we-bare-bears/sa/showicon.png?w=100&amp;h=100">
+                    <span class="category">Âm nhạc</span>
+                </div>
+                <div class="w-des">
+                    <span>Những video âm nhạc vui nhộn của tớ</span>
+                </div>
+            </div>
+            <div class="w-body">
+                <div class="items">
+                    <div class="item item-post">
+                        <div class="image ratio ratio-9-16">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-6.jpg">
+                        </div>
+                        <div class="data">
+                            <div class="icon travel-icon"></div>
+                            <span class="category">Video của tớ</span>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-post">
+                        <div class="image ratio ratio-9-16">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg">
+                        </div>
+                        <div class="data">
+                            <div class="icon music-icon"></div>
+                            <span class="category">Video của tớ</span>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-post">
+                        <div class="image ratio ratio-9-16">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg">
+                        </div>
+                        <div class="data">
+                            <span class="category">Video của tớ</span>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-post">
+                        <div class="image ratio ratio-9-16">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-31.jpg">
+                        </div>
+                        <div class="data">
+                            <span class="category">Video của tớ</span>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                    <div class="item item-post">
+                        <div class="image ratio ratio-9-16">
+                            <img class="ratio-img" src="https://blog.traveloka.com/source/uploads/sites/9/2018/10/ha-giang-co-gi-dep-28.jpg">
+                        </div>
+                        <div class="data">
+                            <span class="category">Video của tớ</span>
+                            <span class="title">Hôm qua em tới trường mẹ đánh em gần chết ớ hơ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-read">
+                <div class="container" style="background-color: rgb(245, 126, 182);">
+                    <div class="image">
+                        <img src="https://assets.stickpng.com/images/58569c7a4f6ae202fedf2751.png">
+                    </div>
+                    <div class="w-link"><span>Xem nhiều bài viết hơn</span>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<footer id='footer'>
-		<div class="container">
-			<div class="">
-		</div>
-	</footer>
+    <footer id="footer">
+        <div class="container">
+            <div class="">
+            </div>
+        </div>
+    </footer>
 
+
+    <script type="text/javascript">
+        var color = ['#fff15c', '#2eade4', '#1e988a'];
+        var wLinkColor = ['#f57eb6', '#95d600', '#2fb6ea', '#ed0080', '#000'];
+        Array.prototype.forEach.call(document.querySelectorAll('body .wrapper'), (el) => {
+            var a = Math.floor(Math.random() * color.length);
+            el.style.backgroundColor = color[a];
+            color.splice(a, 1);
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('.w-read .container'), (el) => {
+            var a = Math.floor(Math.random() * wLinkColor.length);
+            el.style.backgroundColor = wLinkColor[a];
+            wLinkColor.splice(a, 1);
+        });
+    </script>
 </body>
-<script type="text/javascript">
-	var color = ['#fff15c','#2eade4','#1e988a'];
-	var wLinkColor = ['#f57eb6','#95d600','#2fb6ea','#ed0080','#000'];
-	Array.prototype.forEach.call(document.querySelectorAll('body .wrapper'), (el) => {
-		var a = Math.floor(Math.random() * color.length) ;
-		el.style.backgroundColor = color[a];
-		color.splice(a, 1);
-	});
-	Array.prototype.forEach.call(document.querySelectorAll('.w-read .container'), (el) => {
-		var a = Math.floor(Math.random() * wLinkColor.length) ;
-		el.style.backgroundColor = wLinkColor[a];
-		wLinkColor.splice(a, 1);
-	});
-</script>
+
 </html>
